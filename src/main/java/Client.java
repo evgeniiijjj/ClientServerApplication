@@ -6,13 +6,13 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client implements Runnable {
-    Scanner scanner = new Scanner(System.in);
     final String host = "netology.homework";
     final int port = 8085;
     public void run() {
         try(Socket clientSocket = new Socket(host, port)
             ; PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)
-            ; BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
+            ; BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))
+            ; Scanner scanner = new Scanner(System.in)) {
             while(true) {
                 String resp = in.readLine();
                 System.out.println(resp);
